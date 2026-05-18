@@ -58,5 +58,5 @@ if (submitted is True):
     # inpp = json.dumps(inp)
 
     # st.write(type(inp))
-    data = requests.post(url, json=inp).json()
+    data = requests.post(url, json=inp, timeout=5).json()
     st.write(data)
