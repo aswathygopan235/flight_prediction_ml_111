@@ -3,8 +3,7 @@ numpy==1.26.4
 python-dotenv
 uvicorn
 fastapi
-xgboost==2.0.3
 joblib==1.4.0
-scikit-learn==1.4.1.post1
 pydantic
-streamlit
+xgboost==2.0.3
+scikit-learn==1.4.1.post1

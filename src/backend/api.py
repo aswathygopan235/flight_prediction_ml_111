@@ -9,14 +9,9 @@ import numpy as np
 import pandas as pd
 
 import joblib
-import logging
-import sys
-import xgboost as xgb
 from pydantic import BaseModel, field_validator, ValidationError, BeforeValidator, model_validator
 from typing import Optional
 
-from xgboost import XGBRegressor
-import pickle
 from src.util.transformer.transformer import FeatureEngineer
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
