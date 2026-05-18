@@ -3,7 +3,6 @@ numpy==1.26.4
 python-dotenv
 uvicorn
 fastapi
-matplotlib
 xgboost==2.0.3
 joblib==1.4.0
 scikit-learn==1.4.1.post1
