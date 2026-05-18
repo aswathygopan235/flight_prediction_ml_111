@@ -1,7 +1,0 @@
-pandas
-numpy
-python-dotenv
-uvicorn
-fastapi
-matplotlib
-xgboost

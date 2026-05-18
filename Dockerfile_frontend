@@ -1,0 +1,19 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN mkdir -p -v src
+
+WORKDIR /app/src
+
+COPY src/frontend ./frontend
+
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+RUN pip freeze > requirements.txt
+
+
+ENTRYPOINT ["streamlit", "run", "src/frontend/app.py", "--server.port=8501", "--server.address=0.0.0.0"]

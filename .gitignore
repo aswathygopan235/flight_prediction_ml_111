@@ -1,3 +1,5 @@
 .env
 auth.json
 *.log
+__pycache__/
+venv
