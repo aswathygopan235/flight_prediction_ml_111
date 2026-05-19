@@ -74,7 +74,6 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 
         row = {"field": field, "msg": err["msg"]}
         txt.append(row)
-        print(err["loc"])
 
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, content=jsonable_encoder(
