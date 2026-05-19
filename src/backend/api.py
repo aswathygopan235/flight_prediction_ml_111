@@ -78,7 +78,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, content=jsonable_encoder(
-            {"status": False, "errors": txt}),
+            {"success": False, "errors": txt}),
     )
 
 
@@ -180,6 +180,7 @@ async def predict(data: Flight):
     print(type(result))
     print(result)
     d = {
+        "success": True,
         "result": np.round(result, 2)
     }
     return JSONResponse(content=jsonable_encoder(d))
