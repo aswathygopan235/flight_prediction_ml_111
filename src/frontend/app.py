@@ -6,6 +6,15 @@ from dotenv import load_dotenv
 load_dotenv()
 BASEURL = os.getenv('BASEURL')
 
+
+@st.dialog("result")
+def result_modal(res):
+    if (res["status"] == False):
+        st.write("failed")
+
+    st.write(data["result"])
+
+
 submitted = False
 st.markdown("# Flight Price Prediction App")
 with st.form("my_form"):
@@ -58,5 +67,6 @@ if (submitted is True):
     # inpp = json.dumps(inp)
 
     # st.write(type(inp))
-    data = requests.post(url, json=inp, timeout=5).json()
-    st.write(data)
+    with st.spinner("Wait for it..."):
+        data = requests.post(url, json=inp, timeout=5).json()
+        st.write(data)
