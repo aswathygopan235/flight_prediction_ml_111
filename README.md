@@ -24,6 +24,4 @@ https://github.com/aswathygopan235/flight_prediction_ml_111https://github.com/as
 
 ###### How was it processed
 
-
-
-![](/images/flight_price_prediction.png)
+![Image](/images/flight_price_prediction.png)
