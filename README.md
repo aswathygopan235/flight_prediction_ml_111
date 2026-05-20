@@ -4,10 +4,16 @@
 
 This is an app which predicts the price of economy class tickets based on cities, arrival time, departure time, number of stops
 
-##### try it out at
+###### UI app
 
 ```
-https://flight-prediction-ml-111.onrender.com
+https://flight-prediction-ml-111-963074352354.europe-west2.run.app/
+```
+
+##### view OpenAPI docs
+
+```
+https://flight-prediction-ml-111.onrender.com/doc
 ```
 
 ##### view code
@@ -15,3 +21,9 @@ https://flight-prediction-ml-111.onrender.com
 ```
 https://github.com/aswathygopan235/flight_prediction_ml_111https://github.com/aswathygopan235/flight_prediction_ml_111
 ```
+
+###### How was it processed
+
+
+
+![](/images/flight_price_prediction.png)
