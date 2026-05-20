@@ -8,7 +8,7 @@ BASEURL = os.getenv('BASEURL')
 OPENAPI = os.getenv('OPENAPI')
 
 
-@st.dialog("Result", on_dismiss="rerun")
+@st.dialog("Result")
 def result_modal(res):
     """modal to show result"""
     if res["success"] is False:
@@ -51,6 +51,17 @@ def call_price_api():
 # st.session_state["submit"] = False
 
 def main():
+    with st.container():
+        col1, col2, col3 = st.columns(
+            [.6, .2, .2], vertical_alignment="center")
+        with col2:
+            # st.html("<a href='https://github.com/aswathygopan235/flight_prediction_ml_111'><img alt='View on github' src='https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white' /></a>")
+            st.link_button(label="view on github",
+                           url="https://github.com/aswathygopan235/flight_prediction_ml_111", type="secondary")
+
+        with col3:
+            st.link_button(label="Try it out", url=OPENAPI +
+                           "/docs", type="secondary")
 
     with st.container():
 
@@ -91,15 +102,7 @@ def main():
                          ("short_haul", "medium_haul", "long_haul", "ultra_long_haul"), key="haul_type_sb")
 
             st.form_submit_button(
-                "Submit", key="submit_flight_info", on_click=call_price_api, type="primary")
-
-    with st.container(width=275):
-        col1, col2 = st.columns(2)
-        with col1:
-            st.html("<a href='https://github.com/aswathygopan235/flight_prediction_ml_111'><img alt='View on github' src='https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white' /></a>")
-        with col2:
-            st.link_button(label="Try it out", url=OPENAPI +
-                           "/docs", type="secondary")
+                "Submit", on_click=call_price_api, type="primary")
 
 
 # st.write(type(inp))

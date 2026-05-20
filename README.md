@@ -7,7 +7,7 @@ This is an app which predicts the price of economy class tickets based on cities
 ##### try it out at
 
 ```
-https://flight-prediction-ml-111.onrender.com view code
+https://flight-prediction-ml-111.onrender.com
 ```
 
 ##### view code
