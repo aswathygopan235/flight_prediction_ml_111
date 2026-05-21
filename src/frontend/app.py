@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import os
+import time
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -48,7 +49,9 @@ def call_price_api():
         "haul_type": st.session_state["haul_type_sb"]
     }
 
-    data = requests.post(url, json=inp, timeout=60).json()
+    with st.spinner("Calculating"):
+        data = requests.post(url, json=inp, timeout=60).json()
+        time.sleep(5)
 
     if (result_modal not in st.session_state):
         result_modal(data)
@@ -58,7 +61,10 @@ def call_price_api():
 
 def main():
     """Main"""
-    with st.container():
+
+    full = st.empty()
+
+    with full, st.container():
         col1, col2, col3 = st.columns(
             [.6, .2, .2], vertical_alignment="center")
         with col2:
