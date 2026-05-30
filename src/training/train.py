@@ -133,6 +133,8 @@ def train():
     # with open('backend/models/economy_pipeline.pkl', 'wb') as f:
     #     pickle.dump(pipeline, f)
 
+    print(pipeline)
+
 
 if __name__ == "__main__":
     train()
