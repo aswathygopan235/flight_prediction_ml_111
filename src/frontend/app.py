@@ -8,19 +8,24 @@ BASEURL = os.getenv('BASEURL')
 OPENAPI = os.getenv('OPENAPI')
 
 
-@st.dialog("Result")
+@st.dialog("Result", dismissible=False, width="small")
 def result_modal(res):
     """modal to show result"""
-    if res["success"] is False:
-        st.badge("Fail", icon=":material/cancel:", color="red")
-        err = construct_error_message(res)
-        st.write(err)
-    else:
-        st.badge("Success", icon=":material/check:", color="green")
-        st.write(res["result"])
+    with st.container():
+        if res["success"] is False:
+            st.badge("Fail", icon=":material/cancel:", color="red")
+            err = construct_error_message(res)
+            st.write(err)
+        else:
+            st.badge("Success", icon=":material/check:", color="green")
+            st.write(res["result"])
+
+        if (st.button("close")):
+            st.rerun()
 
 
 def construct_error_message(result):
+    """create colour coded error message"""
     error_log = result["errors"]
     msg = ""
     for error in error_log:
@@ -30,6 +35,7 @@ def construct_error_message(result):
 
 
 def call_price_api():
+    """API called to predict price"""
     url = BASEURL+"/predict"
     inp = {
         "source_city": st.session_state["source_city_sb"],
@@ -42,7 +48,7 @@ def call_price_api():
         "haul_type": st.session_state["haul_type_sb"]
     }
 
-    data = requests.post(url, json=inp, timeout=5).json()
+    data = requests.post(url, json=inp, timeout=60).json()
 
     if (result_modal not in st.session_state):
         result_modal(data)
@@ -51,6 +57,7 @@ def call_price_api():
 # st.session_state["submit"] = False
 
 def main():
+    """Main"""
     with st.container():
         col1, col2, col3 = st.columns(
             [.6, .2, .2], vertical_alignment="center")
