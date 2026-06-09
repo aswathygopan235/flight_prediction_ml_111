@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import os
 from dotenv import load_dotenv
+import time
 
 load_dotenv()
 BASEURL = os.getenv('BASEURL')
@@ -22,6 +23,25 @@ def result_modal(res):
 
         if (st.button("close")):
             st.rerun()
+
+
+def initial_wake():
+
+    if ("loaded" not in st.session_state):
+        st.session_state["loaded"] = False
+
+    if (st.session_state["loaded"] is False):
+        wake_api()
+        st.session_state["loaded"] = True
+
+
+def wake_api():
+    """API called to wake server"""
+
+    url = BASEURL
+    with st.spinner("loading"):
+        requests.post(url, timeout=60).json()
+        time.sleep(5)
 
 
 def construct_error_message(result):
@@ -58,6 +78,7 @@ def call_price_api():
 
 def main():
     """Main"""
+    initial_wake()
     with st.container():
         col1, col2, col3 = st.columns(
             [.6, .2, .2], vertical_alignment="center")
